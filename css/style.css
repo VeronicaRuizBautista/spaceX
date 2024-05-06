@@ -256,7 +256,7 @@ body {
 }
 
 .footer {
-    background: coral;
+    
     grid-area: section__footer;
     display: grid;
     grid-template-columns: 1fr 8fr 1fr;
@@ -279,6 +279,18 @@ body {
     text-decoration: none;
     display: flex;
     flex-direction: column;
+    color: var(--color--two);
+}
+.footer img {
+    width: 25px;
+}
+.footer .fondo img{
+    top: 73vh;
+    right: -1vh;
+    position: absolute;
+    width: 100%;
+    z-index: -10;
+
 }
 
 .nav__information {
