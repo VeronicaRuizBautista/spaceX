@@ -117,7 +117,7 @@ customElements.define("titulo-starlink" , tituloStarlink)
 
 
 
-//chips
+//Ships
 export class chips extends HTMLElement{
     constructor(){
         super()
@@ -229,3 +229,59 @@ export class titulocores extends HTMLElement{
 
 customElements.define("titulo-cores" , titulocores)
 customElements.define("my-cores" , cores)
+
+
+//Crew
+
+export class crew extends HTMLElement{
+    constructor(){
+        super()
+        this.attachShadow({mode: "open"});
+    }
+    connectedCallback(){
+        this.crew();
+    }
+    async crew(){
+        const bdata = await fetch("https://api.spacexdata.com/v4/crew")
+        const data = await bdata.json();
+        this.renderData(data);
+    }
+        renderData(data){
+            const style = `
+            <link rel="stylesheet" href="../css/report.css">
+            <script src="./js/main.js"></script>`;
+            let content = `${style}`;
+            data.forEach(val =>{
+                content += `
+                <div class="containerComponente">
+                    <div class="subtittle">
+                        <h3>Id: ${val.id}</h3>
+                    </div>
+                    <p> <span>Name: </span> ${val.name}</p>
+                    <p><span>Agency: </span> ${val.agency}</p>
+                    <p><span>Launches: </span>${val.launches}</p>
+                    <p><span>Status: </span> ${val.status}</p>
+                </div>
+            `
+            })
+        this.shadowRoot.innerHTML = content;
+        }
+        
+}
+
+export class titulocrew extends HTMLElement{
+    constructor(){
+        super()
+        this.attachShadow({mode: "open"});
+        const style = `
+        <link rel="stylesheet" href="../css/report.css">
+        <script src="./js/main.js"></script>`;
+        let content = `${style}`;
+        content += `
+        <h1>Crew</h1>`
+        this.shadowRoot.innerHTML = content;
+    }
+}
+
+customElements.define("titulo-crew" , titulocrew)
+customElements.define("my-crew" , crew)
