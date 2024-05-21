@@ -10,8 +10,8 @@
 
 body {
     background: linear-gradient(var(--color--one), var(--color--one--rgba));
+    height: 100vh;
 }
-
 *::-webkit-scrollbar {
     height: 12px;
     width: 10px;
@@ -57,8 +57,7 @@ body {
     }
 }
 .main {
-    /* background: orange; */
-    height: 90vh;
+    height: 75vh;
     display: grid;
     grid-template-columns: 1.5fr 6fr 2fr;
     grid-template-areas: "nav__1 main nav__2";
@@ -103,7 +102,7 @@ body {
 }
 
 .main__section {
-    /* background: green; */
+    height: 70vh;
     grid-area: main;
     position: relative;
     display: grid;
@@ -116,7 +115,7 @@ body {
 }
 
 .section__information__1 {
-    /* background: red; */
+    height: 28vh;
     grid-area: section__header;
     display: flex;
     overflow-x: auto;
@@ -158,7 +157,6 @@ body {
 }
 /*  */
 .section__information__container {
-    /* background: #d9ff00; */
     grid-area: section__main;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -200,7 +198,7 @@ body {
 }
 
 .section__image {
-    /* background: orange; */
+    height: 40vh;
     grid-area: colum__2;
     display: flex;
     overflow-x: auto;
@@ -256,19 +254,28 @@ body {
 }
 
 .footer {
-    
+    /* background-color: red; */
+    width: 100%;
+    height: 18vh;
     grid-area: section__footer;
-    display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
-    grid-template-areas: ". footer__menu .";
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.footer div{
+    height:10vh;
+    width: 35vw;
+    overflow-x: scroll;
 }
 
 .footer ul {
+    height: 1vh;
     grid-area: footer__menu;
-    /* background: violet; */
+    width: 50vw;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: space-around;
+    
 }
 
 .footer ul li {
@@ -276,6 +283,7 @@ body {
 }
 
 .footer ul li a {
+    height: 1vh;
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -283,19 +291,25 @@ body {
 }
 .footer img {
     width: 25px;
+    height: 100px;
 }
+.footer .fondo {
+    /* background-color: indianred; */
+    width: 0px;
+} 
 .footer .fondo img{
-    top: 73vh;
+    bottom: -2vh;
     right: -1vh;
     position: absolute;
     width: 100%;
-    z-index: -10;
+    z-index: -10
 
 }
 
 .nav__information {
     /* background: red; */
     grid-area: nav__2;
+    height: 80vh;
 }
 
 .information__item {
@@ -309,7 +323,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 110px;
+    height: 13vh;
 }
 
 .buttom__paginacion {

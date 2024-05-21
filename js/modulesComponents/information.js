@@ -188,3 +188,114 @@ export const information2Cores = async(info0, info2) =>{
     div.innerHTML =content
     description__item.append(div)
 }
+
+//Ships
+export const informationShips = async(id, info1, info2) =>{
+    let description__item = document.querySelector("#description__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+    <div class="subtittle">
+        <h3>Id: ${id}</h3>
+    </div>
+    <p><span>Type: </span> ${info1}</p>
+    <p><span>Roles: </span> ${[info2]}</p>
+</div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+export const information2Ships = async(info0, info1, info2) =>{
+    let description__item = document.querySelector(".information__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Legacy Id: ${info0}</h3>
+        </div>
+        <p><span>Imo: </span> ${info1}</p>
+        <p><span>Home Port: </span> ${info2}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+//Starlink
+export const informationStarlink = async(id, info1, info2, info3) =>{
+    let description__item = document.querySelector("#description__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Id: ${id}</h3>
+        </div>
+        <p> <span>CCSDS OMM VERS: </span> ${info1}</p>
+        <p><span>Comment: </span> ${info2}</p>
+        <p><span>Creation Date: </span> ${info3}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+export const information2Starlink = async(info0, info1, info2) =>{
+    let description__item = document.querySelector(".information__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Object Name: ${info0}</h3>
+        </div>
+        <p><span>Center Name: </span>${info1}</p>
+        <p><span>Mean Element Theory: </span>${info2}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+
+//crew
+export const informationCrew = async(id, info1, info2) =>{
+    let description__item = document.querySelector("#description__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Id: ${id}</h3>
+        </div>
+        <p><span>Agency: </span> ${info1}</p>
+        <p><span>Launches: </span>${info2}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+export const information2Crew = async(info0, info1,) =>{
+    let description__item = document.querySelector(".information__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Name: ${info0}</h3>
+        </div>
+        <p><span>Status: </span> ${info1}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}

@@ -3,6 +3,9 @@ import {
     paginationRockets,
     paginationCapsules,
     paginationCores,
+    paginationShips,
+    paginationStarlink,
+    paginationCrew
 } from "./modulesComponents/pagination.js";
 
 
@@ -27,8 +30,30 @@ capsules.addEventListener("click", async(e)=>{
 
 let cores = document.querySelector("#cores")
 cores.addEventListener("click", async(e)=>{
-    console.log("hi")
     e.preventDefault()
     paginacion.innerHTML = ""
     paginacion.append(await paginationCores())
 })
+
+let ships = document.querySelector("#ships")
+ships.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationShips())
+})
+
+let starlink = document.querySelector("#starlink")
+starlink.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationStarlink())
+})
+
+
+let crew = document.querySelector("#crew")
+crew.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationCrew())
+})
+
