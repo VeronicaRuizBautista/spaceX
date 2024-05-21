@@ -166,13 +166,83 @@ export const paginationCapsules = async(page=1, limit=5)=>{
     console.log(div);
     let [back, a1,a2,a3,a4, next] = div.children
     a1.click();
-    // <div class="buttom__paginacion">
-    //     <a href="#">&laquo;</a> 
-    //     <a href="#" class="activo">1</a>
-    //     <a href="#">2</a>
-    //     <a href="#">3</a>
-    //     <a href="#">4</a>
-    //     <a href="#">&raquo;</a>
-    // </div>
+    return div;
+}
+
+//cores
+import { 
+    getAllCores,
+    getAllCoresId
+} from "../modules/cores.js";
+import { 
+    informationCores,
+    information2Cores
+ } from "./information.js";
+
+const getCoresId = async(e)=>{
+    e.preventDefault();
+    if(e.target.dataset.page){
+        let paginacion = document.querySelector("#paginacion");
+        paginacion.innerHTML = ""
+        paginacion.append(await paginationCores(Number(e.target.dataset.page)))
+    }
+    let a = e.target.parentElement.children;
+    for(let val of a){
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo');
+    
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item")
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image")
+    section__image.innerHTML = "";
+    let section__information__1 = document.querySelector(".section__information__1")
+    section__information__1.innerHTML = ""
+    let section__information__2 = document.querySelector(".section__information__2")
+    section__information__2.innerHTML = ""
+    let section__information__3 = document.querySelector(".section__information__3")
+    section__information__3.innerHTML = ""
+
+    let Cores = await getAllCoresId(e.target.id)
+
+    await nameRockets("Cores")
+    await imagen("https://www.infoespacial.com/images/showid2/5224144?w=400&mh=300")
+    await informationCores(Cores.id, Cores.last_update)
+    await information2Cores(Cores.serial, Cores.status)
+}
+
+export const paginationCores = async(page=1, limit=5)=>{  
+     
+    let {docs, pagingCounter, totalPages, nextPage} = await getAllCores(page, limit)
+
+    let div = document.createElement("div");
+    div.classList.add("buttom__paginacion")
+
+    
+    let start = document.createElement("a");
+    start.setAttribute("href","#");
+    start.innerHTML = "&laquo";
+    start.setAttribute("data-page", (page==1) ? totalPages : page-1)
+    start.addEventListener("click", getCoresId)
+    div.appendChild(start);
+    docs.forEach((val,) => {
+        let a = document.createElement("a");
+        a.setAttribute("href","#");
+        a.id = val.id;
+        a.textContent = pagingCounter;
+        a.addEventListener("click", getCoresId)
+        div.appendChild(a);
+        pagingCounter++
+    });
+    let end = document.createElement("a");
+    end.setAttribute("href","#");
+    end.innerHTML = "&raquo;";
+    end.setAttribute("data-page", (page && nextPage) ? page+1 : 1)
+    end.addEventListener("click", getCapsulesId)
+    div.appendChild(end);
+    let [back, a1,a2,a3,a4, next] = div.children
+    a1.click();
     return div;
 }

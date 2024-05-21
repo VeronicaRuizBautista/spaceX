@@ -153,3 +153,38 @@ export const information2Capsule = async(info0, info1, info2) =>{
     div.innerHTML =content
     description__item.append(div)
 }
+
+//cores
+export const informationCores = async(id, info2) =>{
+    let description__item = document.querySelector("#description__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Id: ${id}</h3>
+        </div>
+        <p><span>Last Update: </span> ${info2}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+export const information2Cores = async(info0, info2) =>{
+    let description__item = document.querySelector(".information__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Serial: ${info0}</h3>
+        </div>
+        <p><span>Status: </span> ${info2}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
