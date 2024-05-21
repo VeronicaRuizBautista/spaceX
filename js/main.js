@@ -5,7 +5,9 @@ import {
     paginationCores,
     paginationShips,
     paginationStarlink,
-    paginationCrew
+    paginationCrew,
+    paginationCompany,
+    paginationRoadster,
 } from "./modulesComponents/pagination.js";
 
 
@@ -42,12 +44,12 @@ ships.addEventListener("click", async(e)=>{
     paginacion.append(await paginationShips())
 })
 
-let starlink = document.querySelector("#starlink")
-starlink.addEventListener("click", async(e)=>{
-    e.preventDefault()
-    paginacion.innerHTML = ""
-    paginacion.append(await paginationStarlink())
-})
+//let starlink = document.querySelector("#starlink")
+//starlink.addEventListener("click", async(e)=>{
+//    e.preventDefault()
+//    paginacion.innerHTML = ""
+//    paginacion.append(await paginationStarlink())
+//})
 
 
 let crew = document.querySelector("#crew")
@@ -55,5 +57,19 @@ crew.addEventListener("click", async(e)=>{
     e.preventDefault()
     paginacion.innerHTML = ""
     paginacion.append(await paginationCrew())
+})
+
+let company = document.querySelector("#company")
+company.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationCompany())
+})
+
+let roadster= document.querySelector("#roadster")
+roadster.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationRoadster())
 })
 

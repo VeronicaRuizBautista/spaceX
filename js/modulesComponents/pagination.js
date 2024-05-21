@@ -287,7 +287,7 @@ const getShipsId = async(e)=>{
     let Ships = await getAllShipsId(e.target.id)
 
     await nameRockets("Ships")
-    await imageRockets([Ships.image])
+    await imagen("https://space-offshore.com/wp-content/uploads/2020/05/ocisly-768x543.jpg")
     await informationShips(Ships.id, Ships.type, Ships.roles)
     await information2Ships(Ships.legacy_id, Ships.imo, Ships.home_port)
 }
@@ -326,7 +326,7 @@ export const paginationShips = async(page=1, limit=10)=>{
     return div;
 }
 
-//capsule
+//starlink
 import { 
     getAllStarlink,
     getAllStarlinkId
@@ -362,7 +362,7 @@ const getStarlinkId = async(e)=>{
     let section__information__3 = document.querySelector(".section__information__3")
     section__information__3.innerHTML = ""
 
-    let Starlink = await getAllStarlink(e.target.id)
+    let Starlink = await getAllStarlinkId(e.target.id)
     console.log(typeof Starlink)
     // for (let key in Starlink){
     //     await informationStarlink(Starlink.OBJECT_ID, Starlink.CCSDS_OMM_VERS, Starlink.COMMENT, Starlink.CREATION_DATE)
@@ -447,7 +447,7 @@ const getCrewId = async(e)=>{
     let Crew = await getAllCrewId(e.target.id)
 
     await nameRockets("Crew")
-    await imagen([Crew.image])
+    await imagen("https://i.insider.com/5fac51bd144744001858141b?width=700")
     await informationCrew(Crew.id, Crew.agency, [Crew.launches])
     await information2Crew(Crew.name, Crew.status)
 }
@@ -483,6 +483,139 @@ export const paginationCrew = async(page=1, limit=10)=>{
     div.appendChild(end);
     console.log(div);
     let [back, a1,a2,a3,a4, next] = div.children
+    a1.click();
+    return div;
+}
+
+//company
+import { 
+    getAllCompany,
+    getAllCompanyId
+ } from "../modules/compan_info.js";
+import { 
+    informationCompany,
+    information2Company
+ } from "./information.js";
+
+const getCompanyId = async(e)=>{
+    e.preventDefault();
+    if(e.target.dataset.page){
+        let paginacion = document.querySelector("#paginacion");
+        paginacion.innerHTML = ""
+        paginacion.append(await paginationCompany(Number(e.target.dataset.page)))
+    }
+    let a = e.target.parentElement.children;
+    for(let val of a){
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo');
+    
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item")
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image")
+    section__image.innerHTML = "";
+    let section__information__1 = document.querySelector(".section__information__1")
+    section__information__1.innerHTML = ""
+    let section__information__2 = document.querySelector(".section__information__2")
+    section__information__2.innerHTML = ""
+    let section__information__3 = document.querySelector(".section__information__3")
+    section__information__3.innerHTML = ""
+
+    let Company = await getAllCompany()
+
+    await nameRockets("Company")
+    await imagen("https://www.spacex.com/static/images/locations/kennedy.jpg")
+    await informationCompany(Company.headquarters, Company.links, Company.summary)
+    await information2Company(Company.name, Company.founder, Company.founded, Company.employees, Company.vehicles, Company.coo, Company.cto_propulsion)
+}
+
+export const paginationCompany = async(page=1, limit=1)=>{  
+     
+    let docs= await getAllCompany()
+    console.log(typeof docs)
+    let pagingCounter = 1
+    let div = document.createElement("div");
+    div.classList.add("buttom__paginacion")
+
+    
+    let start = document.createElement("a");
+    start.setAttribute("href","#");
+    start.innerHTML = "&laquo";
+    let a = document.createElement("a");
+    a.setAttribute("href","#");
+    a.textContent = pagingCounter;
+    a.addEventListener("click", getCompanyId)
+    div.appendChild(a);
+    console.log(div);
+    let [a1] = div.children
+    a1.click();
+    return div;
+}
+
+//roadster
+import { 
+    getAllRoadster,
+    getAllRoadsterId
+ } from "../modules/roadster.js";
+import { 
+    informationRoadster,
+    information2Roadster
+ } from "./information.js";
+
+const getRoadsterId = async(e)=>{
+    e.preventDefault();
+    if(e.target.dataset.page){
+        let paginacion = document.querySelector("#paginacion");
+        paginacion.innerHTML = ""
+        paginacion.append(await paginationRoadster(Number(e.target.dataset.page)))
+    }
+    let a = e.target.parentElement.children;
+    for(let val of a){
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo');
+    
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item")
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image")
+    section__image.innerHTML = "";
+    let section__information__1 = document.querySelector(".section__information__1")
+    section__information__1.innerHTML = ""
+    let section__information__2 = document.querySelector(".section__information__2")
+    section__information__2.innerHTML = ""
+    let section__information__3 = document.querySelector(".section__information__3")
+    section__information__3.innerHTML = ""
+
+    let Capsule = await getAllRoadsterId()
+
+    await nameRockets("Roadster")
+    await imageRockets([Capsule.flickr_images])
+    await informationRoadster(Capsule.name, Capsule.details, Capsule.launch_date_utc, Capsule.launch_date_unix)
+    await information2Roadster(Capsule.id, Capsule.wikipedia, Capsule.video)
+}
+
+export const paginationRoadster = async(page=1, limit=1)=>{    
+    let docs= await getAllRoadster()
+    console.log(typeof docs)
+    let pagingCounter = 1
+    let div = document.createElement("div");
+    div.classList.add("buttom__paginacion")
+
+    
+    let start = document.createElement("a");
+    start.setAttribute("href","#");
+    start.innerHTML = "&laquo";
+    let a = document.createElement("a");
+    a.setAttribute("href","#");
+    a.textContent = pagingCounter;
+    a.addEventListener("click", getRoadsterId)
+    div.appendChild(a);
+    console.log(div);
+    let [a1] = div.children
     a1.click();
     return div;
 }
