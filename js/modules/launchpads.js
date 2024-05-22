@@ -1,4 +1,4 @@
-export const getAllRoadster = async (page,limit)=>{
+export const getAllLaunchpads = async (page,limit)=>{
     let config = {
         headers:{
             "content-type": "application/json"
@@ -11,13 +11,13 @@ export const getAllRoadster = async (page,limit)=>{
             }
         })
     }
-    let res = await fetch("https://api.spacexdata.com/v4/roadster/query", config)
+    let res = await fetch("https://api.spacexdata.com/v4/launchpads/query", config)
     let data = await res.json();
     return data;
 }
 
-export const getAllRoadsterId = async() =>{
-    let res = await fetch(`https://api.spacexdata.com/v4/roadster/`)
+export const getAllLaunchpadsId = async(id) =>{
+    let res = await fetch(`https://api.spacexdata.com/v4/launchpads/${id}`)
     let data = await res.json()
     return data;
 }

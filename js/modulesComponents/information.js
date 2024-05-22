@@ -421,3 +421,83 @@ export const information2Payloads = async(info0, info1, info2) =>{
     div.innerHTML =content
     description__item.append(div)
 }
+
+//Launchpads
+export const informationLaunchpads = async(id, info1, info2, info3) =>{
+    let description__item = document.querySelector("#description__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3> ${id}</h3>
+        </div>
+        <p> <span>Full Name: </span> ${info1}</p>
+        <p><span>Locality: </span> ${info2}</p>
+        <p><span>Details: </span> ${info3}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+export const information2Launchpads = async(info0, info1, info2) =>{
+    let description__item = document.querySelector(".information__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="snameubtittle">
+            <h3>Id: ${info0}</h3>
+        </div>
+        <p> <span>Status: </span> ${info1}</p>
+        <p><span>Region: </span> ${info2}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+
+
+//Dragons
+export const informationDragons = async(dic1, description) =>{
+    let description__item = document.querySelector("#description__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>Material: ${dic1.material}</h3>
+        </div>
+        <p> <span>Size Meters: </span> ${dic1.size_meters}</p>
+        <p><span>Locality: </span> ${info2}</p>
+        <p><span>Dev Partner: </span> ${dic1.dev_partner}</p>
+        <p><span>Description: </span> ${description}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+export const information2Dragons = async(info0, info1, info2, info3) =>{
+    let description__item = document.querySelector(".information__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="snameubtittle">
+            <h3>Name: ${info0}</h3>
+        </div>
+        <p> <span>Type: </span> ${info1}</p>
+        <p><span>First Flight: </span> ${info2}</p>
+        <p><span>Active: </span> ${info3}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}

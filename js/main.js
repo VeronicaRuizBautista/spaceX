@@ -9,6 +9,8 @@ import {
     paginationCompany,
     paginationRoadster,
     paginationPayloads,
+    paginationLaunchpads,
+    paginationDragons,
 } from "./modulesComponents/pagination.js";
 
 
@@ -79,5 +81,19 @@ payloads.addEventListener("click", async(e)=>{
     e.preventDefault()
     paginacion.innerHTML = ""
     paginacion.append(await paginationPayloads())
+})
+
+let launchpads= document.querySelector("#launchpads")
+launchpads.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationLaunchpads())
+})
+
+let dragons= document.querySelector("#dragons")
+dragons.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationDragons())
 })
 
