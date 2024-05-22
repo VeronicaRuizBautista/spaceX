@@ -20,9 +20,12 @@ export const imageRockets = async(flickr_images)=>{
 export const imagen = async(flickr_images)=>{
     let section__image = document.querySelector("#section__image")
     let div = document.createElement("div");
-    let img = document.createElement("img");
-    img.setAttribute("src", flickr_images)
-    img.setAttribute("referrerpolicy", "no-referrer")
-    div.append(img)
+    div.classList.add("carousel__item")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+        <img class="imgconsultas" src= ${flickr_images}>
+    `
+        div.innerHTML =content
     section__image.append(div)
 }

@@ -571,3 +571,39 @@ export const information2Landingpads = async(info0, info1, info2) =>{
     div.innerHTML =content
     description__item.append(div)
 }
+
+//Launches
+export const informationLaunches= async(id, info1) =>{
+    let description__item = document.querySelector("#description__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="subtittle">
+            <h3>${id}</h3>
+        </div>
+        <p> <span>Details: </span> ${info1}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
+
+export const information2Launches = async(info0, info1, info2) =>{
+    let description__item = document.querySelector(".information__item")
+    let div = document.createElement("div")
+    const style = `<link rel="stylesheet" href="../css/report.css">`;
+    let content = `${style}`;
+    content +=`
+    <div class="containerComponente">
+        <div class="snameubtittle">
+            <h3>Id: ${info0}</h3>
+        </div>
+        <p> <span>Date Local: </span> ${info1}</p>
+        <p> <span>Date Precision: </span> ${info2}</p>
+    </div>
+`
+    div.innerHTML =content
+    description__item.append(div)
+}
