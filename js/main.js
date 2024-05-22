@@ -11,6 +11,7 @@ import {
     paginationPayloads,
     paginationLaunchpads,
     paginationDragons,
+    paginationHistory,
 } from "./modulesComponents/pagination.js";
 
 
@@ -97,3 +98,10 @@ dragons.addEventListener("click", async(e)=>{
     paginacion.append(await paginationDragons())
 })
 
+
+let history= document.querySelector("#history")
+history.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationHistory())
+})

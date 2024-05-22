@@ -816,14 +816,14 @@ const getDragonsId = async(e)=>{
     let Dragons = await getAllDragonsId(e.target.id)
 
     await nameRockets("Dragons")
-    await imagen("https://media.es.wired.com/photos/64f76b704886e9e59be44b06/master/w_2560%2Cc_limit/Dragon%2520SpaceX%2520crew-6.jpg")
+    await imagen("https://www.fromspacewithlove.com/wp-content/uploads/2020/05/spacex-crew-dragon-hero-img.jpg")
     await informationDragons(Dragons.heat_shield, Dragons.description)
     await information2Dragons(Dragons.name, Dragons.type, Dragons.first_flight, Dragons.active)
 }
 
 export const paginationDragons = async(page=1, limit=10)=>{  
      
-    let {docs, pagingCounter, totalPages, nextPage} = await getAllCapsules(page, limit)
+    let {docs, pagingCounter, totalPages, nextPage} = await getAllDragons(page, limit)
     let div = document.createElement("div");
     div.classList.add("buttom__paginacion")
 
@@ -848,6 +848,84 @@ export const paginationDragons = async(page=1, limit=10)=>{
     end.innerHTML = "&raquo;";
     end.setAttribute("data-page", (page && nextPage) ? page+1 : 1)
     end.addEventListener("click", getDragonsId)
+    div.appendChild(end);
+    console.log(div);
+    let [back, a1,a2,a3,a4, next] = div.children
+    a1.click();
+    return div;
+}
+
+//History
+import { 
+    getAllHistory,
+    getAllHistoryId
+} from "../modules/history.js";
+import { 
+    informationHistory,
+    information2History
+ } from "./information.js";
+
+const getHistoryId = async(e)=>{
+    e.preventDefault();
+    if(e.target.dataset.page){
+        let paginacion = document.querySelector("#paginacion");
+        paginacion.innerHTML = ""
+        paginacion.append(await paginationHistory(Number(e.target.dataset.page)))
+    }
+    let a = e.target.parentElement.children;
+    for(let val of a){
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo');
+    
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item")
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image")
+    section__image.innerHTML = "";
+    let section__information__1 = document.querySelector(".section__information__1")
+    section__information__1.innerHTML = ""
+    let section__information__2 = document.querySelector(".section__information__2")
+    section__information__2.innerHTML = ""
+    let section__information__3 = document.querySelector(".section__information__3")
+    section__information__3.innerHTML = ""
+
+    let History = await getAllHistoryId(e.target.id)
+
+    await nameRockets("History")
+    await imagen("https://i.insider.com/61fcf8a2b0ec040018d0d006?width=700")
+    await informationHistory(History.title, History.details)
+    await information2History(History.id, History.links)
+}
+
+export const paginationHistory = async(page=1, limit=10)=>{  
+     
+    let {docs, pagingCounter, totalPages, nextPage} = await getAllHistory(page, limit)
+    let div = document.createElement("div");
+    div.classList.add("buttom__paginacion")
+
+    
+    let start = document.createElement("a");
+    start.setAttribute("href","#");
+    start.innerHTML = "&laquo";
+    start.setAttribute("data-page", (page==1) ? totalPages : page-1)
+    start.addEventListener("click", getHistoryId)
+    div.appendChild(start);
+    docs.forEach((val,id) => {
+        let a = document.createElement("a");
+        a.setAttribute("href","#");
+        a.id = val.id;
+        a.textContent = pagingCounter;
+        a.addEventListener("click", getHistoryId)
+        div.appendChild(a);
+        pagingCounter++
+    });
+    let end = document.createElement("a");
+    end.setAttribute("href","#");
+    end.innerHTML = "&raquo;";
+    end.setAttribute("data-page", (page && nextPage) ? page+1 : 1)
+    end.addEventListener("click", getHistoryId)
     div.appendChild(end);
     console.log(div);
     let [back, a1,a2,a3,a4, next] = div.children
