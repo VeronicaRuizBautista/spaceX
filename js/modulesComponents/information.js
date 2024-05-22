@@ -227,7 +227,7 @@ export const information2Ships = async(info0, info1, info2) =>{
 }
 
 //Starlink
-export const informationStarlink = async(id, info1, info2, info3) =>{
+export const informationStarlink = async(dic1) =>{
     let description__item = document.querySelector("#description__item")
     let div = document.createElement("div")
     const style = `<link rel="stylesheet" href="../css/report.css">`;
@@ -235,11 +235,11 @@ export const informationStarlink = async(id, info1, info2, info3) =>{
     content +=`
     <div class="containerComponente">
         <div class="subtittle">
-            <h3>Id: ${id}</h3>
+            <h3>CCSDS OMM VERS: ${dic1.CCSDS_OMM_VERS}</h3>
         </div>
-        <p> <span>CCSDS OMM VERS: </span> ${info1}</p>
-        <p><span>Comment: </span> ${info2}</p>
-        <p><span>Creation Date: </span> ${info3}</p>
+        <p> <span>Comment: </span> ${dic1.COMMENT}</p>
+        <p><span>Creation Date: </span> ${dic1.CREATION_DATE}</p>
+        <p><span>Object Id: </span> ${dic1.OBJECT_ID}</p>
     </div>
 `
     div.innerHTML =content
@@ -254,10 +254,10 @@ export const information2Starlink = async(info0, info1, info2) =>{
     content +=`
     <div class="containerComponente">
         <div class="subtittle">
-            <h3>Object Name: ${info0}</h3>
+            <h3>id: ${info0}</h3>
         </div>
-        <p><span>Center Name: </span>${info1}</p>
-        <p><span>Mean Element Theory: </span>${info2}</p>
+        <p><span>Version: </span>${info1}</p>
+        <p><span>Launch: </span>${info2}</p>
     </div>
 `
     div.innerHTML =content

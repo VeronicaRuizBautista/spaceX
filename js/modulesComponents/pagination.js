@@ -364,13 +364,10 @@ const getStarlinkId = async(e)=>{
 
     let Starlink = await getAllStarlinkId(e.target.id)
     console.log(typeof Starlink)
-    // for (let key in Starlink){
-    //     await informationStarlink(Starlink.OBJECT_ID, Starlink.CCSDS_OMM_VERS, Starlink.COMMENT, Starlink.CREATION_DATE)
-    //     await information2Starlink(Starlink.OBJECT_NAME, Starlink.CENTER_NAM, Starlink.MEAN_ELEMENT_THEORY)
-    // }
-
     await nameRockets("Starlink")
-    await imagen("https://upload.wikimedia.org/wikipedia/commons/9/91/Starlink_Mission_%2847926144123%29.jpg")
+    await imagen("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCN3P6tTGqZoqP1L1IlLwypH9ZBbdwjQKJaQ&usqp=CAU")
+    await informationStarlink(Starlink.spaceTrack)
+    await information2Starlink(Starlink.id, Starlink.version, Starlink.launch)
 }
 
 export const paginationStarlink = async(page=1, limit=10)=>{  

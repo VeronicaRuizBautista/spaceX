@@ -48,12 +48,12 @@ ships.addEventListener("click", async(e)=>{
     paginacion.append(await paginationShips())
 })
 
-//let starlink = document.querySelector("#starlink")
-//starlink.addEventListener("click", async(e)=>{
-//    e.preventDefault()
-//    paginacion.innerHTML = ""
-//    paginacion.append(await paginationStarlink())
-//})
+let starlink = document.querySelector("#starlink")
+starlink.addEventListener("click", async(e)=>{
+   e.preventDefault()
+   paginacion.innerHTML = ""
+   paginacion.append(await paginationStarlink())
+})
 
 
 let crew = document.querySelector("#crew")
