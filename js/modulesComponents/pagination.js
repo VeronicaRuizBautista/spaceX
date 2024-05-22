@@ -619,3 +619,82 @@ export const paginationRoadster = async(page=1, limit=1)=>{
     a1.click();
     return div;
 }
+
+//payloads
+import { 
+    getAllPayloads,
+    getAllPayloadsId
+ } from "../modules/payloads.js";
+import { 
+    informationPayloads,
+    information2Payloads
+ } from "./information.js";
+
+const getPayloadsId = async(e)=>{
+    e.preventDefault();
+    if(e.target.dataset.page){
+        let paginacion = document.querySelector("#paginacion");
+        paginacion.innerHTML = ""
+        paginacion.append(await paginationPayloads(Number(e.target.dataset.page)))
+    }
+    let a = e.target.parentElement.children;
+    for(let val of a){
+        val.classList.remove('activo');
+    }
+    e.target.classList.add('activo');
+    
+    let information__2 = document.querySelector("#information__2");
+    information__2.innerHTML = "";
+    let description__item = document.querySelector("#description__item")
+    description__item.innerHTML = "";
+    let section__image = document.querySelector("#section__image")
+    section__image.innerHTML = "";
+    let section__information__1 = document.querySelector(".section__information__1")
+    section__information__1.innerHTML = ""
+    let section__information__2 = document.querySelector(".section__information__2")
+    section__information__2.innerHTML = ""
+    let section__information__3 = document.querySelector(".section__information__3")
+    section__information__3.innerHTML = ""
+
+    let Payloads = await getAllPayloadsId(e.target.id)
+
+    await nameRockets("Payloads")
+    await imagen("https://www.nasaspaceflight.com/wp-content/uploads/2023/04/T7-labeled-watermarked.jpg")
+    await informationPayloads(Payloads.name, Payloads.type, Payloads.reused)
+    await information2Payloads(Payloads.id, Payloads.reference_system, Payloads.regime)
+}
+
+export const paginationPayloads = async(page=1, limit=10)=>{  
+     
+    let {docs, pagingCounter, totalPages, nextPage} = await getAllPayloads(page, limit)
+
+    let div = document.createElement("div");
+    div.classList.add("buttom__paginacion")
+
+    
+    let start = document.createElement("a");
+    start.setAttribute("href","#");
+    start.innerHTML = "&laquo";
+    start.setAttribute("data-page", (page==1) ? totalPages : page-1)
+    start.addEventListener("click", getPayloadsId)
+    div.appendChild(start);
+    docs.forEach((val,id) => {
+        let a = document.createElement("a");
+        a.setAttribute("href","#");
+        a.id = val.id;
+        a.textContent = pagingCounter;
+        a.addEventListener("click", getPayloadsId)
+        div.appendChild(a);
+        pagingCounter++
+    });
+    let end = document.createElement("a");
+    end.setAttribute("href","#");
+    end.innerHTML = "&raquo;";
+    end.setAttribute("data-page", (page && nextPage) ? page+1 : 1)
+    end.addEventListener("click", getPayloadsId)
+    div.appendChild(end);
+    console.log(div);
+    let [back, a1,a2,a3,a4, next] = div.children
+    a1.click();
+    return div;
+}

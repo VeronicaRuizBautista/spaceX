@@ -8,6 +8,7 @@ import {
     paginationCrew,
     paginationCompany,
     paginationRoadster,
+    paginationPayloads,
 } from "./modulesComponents/pagination.js";
 
 
@@ -71,5 +72,12 @@ roadster.addEventListener("click", async(e)=>{
     e.preventDefault()
     paginacion.innerHTML = ""
     paginacion.append(await paginationRoadster())
+})
+
+let payloads= document.querySelector("#payloads")
+payloads.addEventListener("click", async(e)=>{
+    e.preventDefault()
+    paginacion.innerHTML = ""
+    paginacion.append(await paginationPayloads())
 })
 
